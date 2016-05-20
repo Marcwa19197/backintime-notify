@@ -1,6 +1,6 @@
 #!/bin/bash
 #	by marcwa19197. 20-05-2016 (marcwa19197@gmail.com)
-#	notification script for backintime. (for backintime > version 1.0)
+#	simple notification script for backintime. (for backintime > version 1.0)
 #       Place this in your ~/.config/backintime/ directory! Dont forget to chmod +x ;-)
 #	also see http://backintime.le-web.org/documentation/usercallback/
 
@@ -11,7 +11,6 @@ mail_from="monitoring@sec-hosting.de"
 
 # some constants
 AKT_DATUM=`date +%d-%m-%Y-%H-%M`
-
 
 #
 # begin script

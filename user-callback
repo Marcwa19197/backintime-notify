@@ -7,7 +7,7 @@
 
 # config
 mail_to="marcwa19197@gmail.com"
-mail_from="monitoring@yourserver.de"
+mail_from="BackInTime <monitoring@yourserver.de>"
 
 # some constants
 AKT_DATUM=`date +%d-%m-%Y-%H-%M`

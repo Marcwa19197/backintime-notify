@@ -1,0 +1,47 @@
+#!/bin/bash
+#	by marcwa19197. 20-05-2016 (marcwa19197@gmail.com)
+#	notification script for backintime. only on errors. (for backintime > version 1.0)
+#       Place this in your ~/.config/backintime/ directory! Dont forget to chmod +x ;-)
+#	also see http://backintime.le-web.org/documentation/usercallback/
+
+
+# config
+mail_to="marcwa19197@gmail.com"
+mail_from="monitoring@sec-hosting.de"
+
+# some constants
+AKT_DATUM=`date +%d-%m-%Y-%H-%M`
+
+
+#
+# begin script
+#
+profile_id="$1"
+profile_name="$2"
+
+case "$3" in
+
+	#start backup
+	1) echo -e "Backup started.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime: Backup started" -r "$mail_from" "$mail_to"
+       ;;
+    2) echo -e "Backup finished.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime: Backup finished" -r "$mail_from" "$mail_to"
+       ;;
+	3) echo -e "Backup taken\nProfileID: $profile_id\nProfileName: $profile_name\SnapshotID: $4\Snapshot Path: $5" | mail -s "BackInTime: Backup taken" -r "$mail_from" "$mail_to"
+       ;;
+    # error!
+    4) case "$4" in
+
+		1) echo -e "Error - no configuration found.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: No config" -r "$mail_from" "$mail_to"
+		   ;;
+		2) echo -e "Error - take snapshot already running.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Already running backup" -r "$mail_from" "$mail_to"
+		   ;;
+		3) echo -e "Error - cant connect to backup directory\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Backupdirectory not reachable" -r "$mail_from" "$mail_to"
+		   ;;
+		4) echo -e "Error - snapshot already exist\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Snapshot for now already exists" -r "$mail_from" "$mail_to"
+		   ;;
+	   esac
+	;;
+esac
+
+
+

@@ -23,7 +23,7 @@ case "$3" in
 	#start backup
 	1) echo -e "Backup started.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup started" -r "$mail_from" "$mail_to"
        ;;
-    2) echo -e "Backup finished.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup finished" -r "$mail_from" "$mail_to"
+	2) echo -e "Backup finished.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup finished" -r "$mail_from" "$mail_to"
        ;;
 	3) echo -e "Backup taken\nProfileID: $profile_id\nProfileName: $profile_name\SnapshotID: $4\Snapshot Path: $5\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup taken" -r "$mail_from" "$mail_to"
        ;;

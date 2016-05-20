@@ -22,22 +22,22 @@ profile_name="$2"
 case "$3" in
 
 	#start backup
-	1) echo -e "Backup started.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime: Backup started" -r "$mail_from" "$mail_to"
+	1) echo -e "Backup started.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup started" -r "$mail_from" "$mail_to"
        ;;
-    2) echo -e "Backup finished.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime: Backup finished" -r "$mail_from" "$mail_to"
+    2) echo -e "Backup finished.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup finished" -r "$mail_from" "$mail_to"
        ;;
-	3) echo -e "Backup taken\nProfileID: $profile_id\nProfileName: $profile_name\SnapshotID: $4\Snapshot Path: $5" | mail -s "BackInTime: Backup taken" -r "$mail_from" "$mail_to"
+	3) echo -e "Backup taken\nProfileID: $profile_id\nProfileName: $profile_name\SnapshotID: $4\Snapshot Path: $5\nDate: $AKT_DATUM" | mail -s "BackInTime: Backup taken" -r "$mail_from" "$mail_to"
        ;;
     # error!
     4) case "$4" in
 
-		1) echo -e "Error - no configuration found.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: No config" -r "$mail_from" "$mail_to"
+		1) echo -e "Error - no configuration found.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime Error: No config" -r "$mail_from" "$mail_to"
 		   ;;
-		2) echo -e "Error - take snapshot already running.\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Already running backup" -r "$mail_from" "$mail_to"
+		2) echo -e "Error - take snapshot already running.\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime Error: Already running backup" -r "$mail_from" "$mail_to"
 		   ;;
-		3) echo -e "Error - cant connect to backup directory\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Backupdirectory not reachable" -r "$mail_from" "$mail_to"
+		3) echo -e "Error - cant connect to backup directory\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime Error: Backupdirectory not reachable" -r "$mail_from" "$mail_to"
 		   ;;
-		4) echo -e "Error - snapshot already exist\nProfileID: $profile_id\nProfileName: $profile_name" | mail -s "BackInTime Error: Snapshot for now already exists" -r "$mail_from" "$mail_to"
+		4) echo -e "Error - snapshot already exist\nProfileID: $profile_id\nProfileName: $profile_name\nDate: $AKT_DATUM" | mail -s "BackInTime Error: Snapshot for now already exists" -r "$mail_from" "$mail_to"
 		   ;;
 	   esac
 	;;
